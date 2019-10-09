@@ -7,7 +7,7 @@ var payload1 = "Turn ON: |" + startTime;
 var payload2 = "Turn OFF |" + startTime; 
 var topic = "patrick/device/status"; 
 
-startTime = function() {
+var startTime = function() {
       var today = new Date();
       var h = today.getHours();
       var m = today.getMinutes();
