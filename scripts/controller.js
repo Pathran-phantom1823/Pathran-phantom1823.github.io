@@ -2,20 +2,20 @@
 var btnOn = document.getElementById('onBtn');
 var btnOff = document.getElementById('ofBtn');
 
+
 var data;
-var payload1 = "Turn ON: |" + startTime; 
-var payload2 = "Turn OFF |" + startTime; 
+var payload1 = "Turn ON: |" + startTime(); 
+var payload2 = "Turn OFF |" + startTime(); 
 var topic = "patrick/device/status"; 
 
-var startTime = function() {
+ function startTime() {
       var today = new Date();
       var h = today.getHours();
       var m = today.getMinutes();
       var s = today.getSeconds();
       m = checkTime(m);
       s = checkTime(s);
-      document.getElementById('txt').innerHTML =
-      h + ":" + m + ":" + s;
+      time = h + ":" + m + ":" + s;
       var t = setTimeout(startTime, 500);
     }
     function checkTime(i) {
