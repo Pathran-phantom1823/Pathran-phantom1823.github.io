@@ -1,56 +1,40 @@
 
 var btnOn = document.getElementById('onBtn');
 var btnOff = document.getElementById('ofBtn');
-
+// var timestamp = new Date($.now());
+// var today = new Date();
+// var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds()
 
 var data;
-var payload1 = "Turn ON: |" + startTime(); 
-var payload2 = "Turn OFF |" + startTime(); 
-var topic = "patrick/device/status"; 
 
- function startTime() {
-      var today = new Date();
-      var h = today.getHours();
-      var m = today.getMinutes();
-      var s = today.getSeconds();
-      m = checkTime(m);
-      s = checkTime(s);
-      time = h + ":" + m + ":" + s;
-      var t = setTimeout(startTime, 500);
-    }
-    function checkTime(i) {
-      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
-      return i;
-    }
+var topic = "patrick/device/status";
+var payload1;
+var payload2;
 
-      client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt");
-      client.on("connect", function () {
-            alert("Successfully connected to wss://test.mosquitto.org:8081/mqtt");
+client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt");
+client.on("connect", function () {
+      alert("Successfully connected to wss://test.mosquitto.org:8081/mqtt");
 
-
-      // client.on("message", function (topic, payload) {
-      //       var table = document.getElementById('tbody');
-      //       var row = table.insertRow(0);
-      //       var cell1 = row.insertCell(0);
-      //       var cell2 = row.insertCell(1);
-      //       var cell3 = row.insertCell(2);
-      //       cell1.innerHTML = topic;
-      //       cell2.innerHTML = payload;
-      //       cell3.innerHTML = timestamp;
-      // })
 });
+payload1 = "Turn ON: |" + moment().format('MMMM Do YYYY, h:mm:ss a');
+payload2 = "Turn OFF |" + moment().format('MMMM Do YYYY, h:mm:ss a');
 
 btnOn.addEventListener('click', function (e) {
       e.preventDefault();
+      payload1 = "Turn ON: |" + moment().format('MMMM Do YYYY, h:mm:ss a');
+      payload2 = "Turn OFF |" + moment().format('MMMM Do YYYY, h:mm:ss a');
       client.subscribe("patrick/broker/status");
       console.log("patrick/broker/status")
-      client.publish(topic,payload1)
+      client.publish(topic, payload1)
 })
 
 btnOff.addEventListener('click', function (e) {
       e.preventDefault();
+      payload1 = "Turn ON: |" + moment().format('MMMM Do YYYY, h:mm:ss a');
+      payload2 = "Turn OFF |" + moment().format('MMMM Do YYYY, h:mm:ss a');
+
       // client.subscribe();
-      client.publish(topic,payload2)
+      client.publish(topic, payload2)
 })
 
 
