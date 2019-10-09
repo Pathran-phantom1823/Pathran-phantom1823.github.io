@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MQTT Switch</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/ico" href="https://lh3.googleusercontent.com/i6Skwc3D1rMxMqORnZNfflDc5lMH44t5zIoE0v4yRQoZJguuar9d5GLYhEfaxSVlZjY";
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel='stylesheet' href="style.css">
+    
+</head>
+
+<body>
+    <header id="head">
+        <center>
+            <h1>MQTT Switch</h1>
+        </center>
+    </header><br><br>
+    <center>
+    <button class="btn btn-primary" id="onBtn" value="patrick/broker/status">On</button>
+    <button class="btn btn-danger" id="ofBtn" value="patrick/broker/status">Off</button>
+    </center>
+</body>
+<script src="scripts/browserMqtt.js"></script>
+<script src="scripts/controller.js"></script>
+
+</html>
