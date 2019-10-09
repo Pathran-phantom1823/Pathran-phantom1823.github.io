@@ -1,11 +1,27 @@
 
 var btnOn = document.getElementById('onBtn');
 var btnOff = document.getElementById('ofBtn');
-var timestamp = new Date()
+
 var data;
-var payload1 = "Turn ON: |" + timestamp; 
-var payload2 = "Turn OFF |" + timestamp; 
+var payload1 = "Turn ON: |" + startTime; 
+var payload2 = "Turn OFF |" + startTime; 
 var topic = "patrick/device/status"; 
+
+startTime = function() {
+      var today = new Date();
+      var h = today.getHours();
+      var m = today.getMinutes();
+      var s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML =
+      h + ":" + m + ":" + s;
+      var t = setTimeout(startTime, 500);
+    }
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
 
       client = mqtt.connect("wss://test.mosquitto.org:8081/mqtt");
       client.on("connect", function () {
